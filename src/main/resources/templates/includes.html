@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:fragment="header">
+
+
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <link rel="stylesheet"  type="text/css" th:href="@{/style/navStyle.css}" />
+
+        <title>Atypon University</title>
+
+    </head>
+
+    <body>
+
+
+
+</div>
+
+<div th:fragment="AdminNavBar">
+
+
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="logo">
+            <img src="https://raw.githubusercontent.com/MamounH/Logo/main/220px-Atypon.png" class="img img-responsive center-block"/>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/Admin/Users}">
+                        <i class="fa fa-user-circle"></i>
+                        Users
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/MamounH">
+                        <i class="fa fa-github">
+                        </i>
+                        GitHub
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">
+                        <i class="fa fa-sign-out">
+                        </i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+    </nav>
+
+
+</div>
+
+<div th:fragment="ViewerNavBar">
+
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="logo">
+            <img src="https://raw.githubusercontent.com/MamounH/Logo/main/220px-Atypon.png" class="img img-responsive center-block"/>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Viewer/Books}">
+                        <i class="fa fa-book">
+                        </i>
+                        Books
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Viewer/Quotes}">
+                        <i class="fa fa-quote-right">
+                        </i>
+                        Quotes
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/MamounH">
+                        <i class="fa fa-github">
+                        </i>
+                        GitHub
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">
+                        <i class="fa fa-sign-out">
+                        </i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+    </nav>
+
+
+</div>
+
+
+<div th:fragment="EditorNavBar">
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="logo">
+            <img src="https://raw.githubusercontent.com/MamounH/Logo/main/220px-Atypon.png" class="img img-responsive center-block"/>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Editor/Books}">
+                        <i class="fa fa-book">
+                        </i>
+                        Books
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/Editor/EQuotes}">
+                        <i class="fa fa-quote-right">
+                        </i>
+                        Quotes
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/MamounH">
+                        <i class="fa fa-github">
+                        </i>
+                        GitHub
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">
+                        <i class="fa fa-sign-out">
+                        </i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+    </nav>
+
+
+</div>
+
+<div th:fragment="footer">
+
+    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+    </body>
+</html>
+
+
+</div>

@@ -1,0 +1,55 @@
+<div th:replace="includes.html :: header"></div>
+
+
+<div th:replace="includes.html :: ViewerNavBar"></div>
+
+<style> .table-wrapper {
+    max-height: 450px;
+    overflow: scroll;
+}
+</style>
+
+
+
+<div class="container">
+
+    <div class="table-wrapper">
+        <table class = "table table-striped table-hover table-condensed">
+
+
+            <thead>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Subject</th>
+            <th>Publisher</th>
+            <th>Year</th>
+            <th>Quotes</th>
+            </thead>
+            <tbody>
+            <tr>
+
+
+            <tr th:each="book : ${list}">
+                <td th:text="${book.value.ID}"/>
+                <td th:text="${book.value.name}"/>
+                <td th:text="${book.value.author}"/>
+                <td th:text="${book.value.subject}"/>
+                <td th:text="${book.value.publisher}"/>
+                <td th:text="${book.value.year}"/>
+
+                    <td><a class="btn btn-info" th:href="@{/Viewer/BookQuotes/(ID=${book.value.ID})}">Quotes</a></td>
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+
+
+<div th:replace="includes.html :: footer"></div>

@@ -1,0 +1,49 @@
+<div th:replace="includes.html :: header"></div>
+
+
+<div th:replace="includes.html :: EditorNavBar"></div>
+
+
+
+<div class="container">
+
+
+    <form method="POST" th:object="${quote}" th:action="@{/Editor/AddQuote}">
+
+
+        <input type="hidden" name="id" th:value="${quote.id}"/>
+
+        <fieldset class="form-group">
+            <label>Quote</label>
+            <input name="quote" type="text" class="form-control" th:value="${quote.quote}" /> <BR/>
+            <p class="text-warning" th:if="${#fields.hasErrors('quote')}" th:errors="*{quote}" />
+
+        </fieldset>
+
+        <fieldset class="form-group">
+
+            <label>Select Book</label>
+            <select class="form-control" th:id="bookId" th:value="${quote.bookId}" th:name="bookId">
+                <option value="">Books</option>
+                <option th:each="book : ${list}"
+                        th:name="bookId"
+                        th:value="${book.value.ID}"
+                        th:text="${book.value.name}+', '+${book.value.author}"></option>
+            </select>
+        </fieldset>
+
+
+        <a class="btn btn-success" th:href="@{/Editor/EQuotes}">Cancel Adding</a>
+        <input  class="btn btn-success" name="add" type="submit" />
+
+
+    </form>
+
+
+
+</div>
+
+
+
+
+<div th:replace="includes.html :: footer"></div>

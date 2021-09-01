@@ -1,0 +1,42 @@
+<div th:replace="includes.html :: header"></div>
+
+
+<div th:replace="includes.html :: EditorNavBar"></div>
+
+
+<div class="container">
+
+    <form method="POST" th:object="${quote}" th:action="@{/Editor/UpdateQuote}">
+
+        <input type="hidden" name="id" th:value="${quote.id}"/>
+        <input type="hidden" name="bname" th:value="${quote.bookName}"/>
+
+        <fieldset class="form-group">
+            <label>Update Quote</label>
+            <input name="quote" type="text" class="form-control" th:value="${quote.quote}" /> <BR/>
+            <p class="text-warning" th:if="${#fields.hasErrors('quote')}" th:errors="*{quote}" />
+
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Update Book ID</label>
+            <input name="bookId" type="text" class="form-control" th:value="${quote.bookId}" /> <BR/>
+            <p class="text-warning" th:if="${#fields.hasErrors('bookId')}" th:errors="*{bookId}" />
+        </fieldset>
+
+
+
+        <a class="btn btn-success" th:href="@{/Editor/EQuotes}">Cancel Updating</a>
+        <input  class="btn btn-success" name="add" type="submit" />
+
+
+    </form>
+
+
+
+</div>
+
+
+
+
+<div th:replace="includes.html :: footer"></div>

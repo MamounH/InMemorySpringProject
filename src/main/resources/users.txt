@@ -1,0 +1,3 @@
+Mamoun,AbuKoush,mamoun@atypon.com,$2a$10$6zzbsdR6j0J1.Hzbj17RH.r.ugnsNDZrUoulC7AJPfg1cXIPHe1Py,EDITOR
+Admin,Admin,admin@atypon.com,$2a$10$2ow9RKpB8yK2cHEmMMopfuja9WZMD8ToGoBuc16QkzQiyH4PlzBve,ADMIN
+Ahmad,Ahmad,ahmad@atypon.com,$2a$10$Q6DVWNePn/P8DmZAD.FmvOWRo0S0MiOPNbWSJHt5qNgN9/oLruT6W,VIEWER

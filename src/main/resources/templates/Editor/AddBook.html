@@ -1,0 +1,65 @@
+<div th:replace="includes.html :: header"></div>
+
+
+<div th:replace="includes.html :: EditorNavBar"></div>
+
+
+
+<div class="container">
+
+
+    <form method="POST" th:object="${book}" th:action="@{/Editor/AddBook}">
+
+
+        <input type="hidden" name="ID" th:value="${book.ID}"/>
+        <fieldset class="form-group">
+            <label>Book Name</label>
+            <input name="name" type="text" class="form-control" th:value="${book.name}"/> <BR/>
+            <p class="text-warning" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />
+
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Book Author</label>
+            <input name="author" type="text" class="form-control"  th:value="${book.author}"/> <BR/>
+            <p class="text-warning" th:if="${#fields.hasErrors('author')}" th:errors="*{author}" />
+
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Book Subject</label>
+            <input name="subject" type="text" class="form-control" th:value="${book.subject}"/> <BR/>
+            <p class="text-warning" th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" />
+
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Book Publisher</label>
+            <input name="publisher" type="text" class="form-control" th:value="${book.publisher}"/> <BR/>
+            <p class="text-warning" th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}" />
+
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Book Publication Year</label>
+            <input name="year" type="text" class="form-control"  th:value="${book.year}"/> <BR/>
+            <p class="text-warning" th:if="${#fields.hasErrors('year')}" th:errors="*{year}" />
+
+        </fieldset>
+
+
+
+        <a class="btn btn-success" th:href="@{/Editor/Books}">Cancel Adding</a>
+        <input  class="btn btn-success" name="add" type="submit" />
+
+
+    </form>
+
+
+
+</div>
+
+
+
+
+<div th:replace="includes.html :: footer"></div>

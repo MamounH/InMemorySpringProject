@@ -1,0 +1,58 @@
+<div th:replace="includes.html :: header"></div>
+
+
+<div th:replace="includes.html :: AdminNavBar"></div>
+
+<div class="container">
+
+
+    <form method="POST" th:object="${user}" th:action="@{/Admin/AddUser}">
+
+
+        <fieldset class="form-group">
+            <label>User First Name</label>
+            <input name="fName" type="text" th:value="${user.fName}" class="form-control"/>
+            <p class="text-warning" th:if="${#fields.hasErrors('fName')}" th:errors="*{fName}" />
+            <BR/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>User Last Name</label>
+            <input name="lName" type="text" th:value="${user.lName}" class="form-control"/>
+            <p class="text-warning" th:if="${#fields.hasErrors('lName')}" th:errors="*{lName}" />
+            <BR/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>User Email</label>
+            <input name="email" type="text" th:value="${user.getEmail}" class="form-control"/>
+             <p class="text-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" />
+            <BR/>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>User Password</label>
+            <input name="password" type="password" th:value="${user.password}" class="form-control"/>
+            <p class="text-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" />
+            <BR/>
+
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>User Role</label>
+            <INPUT TYPE="radio" name="role" th:field="*{role}"  th:value="ADMIN"/> Admin
+            <INPUT TYPE="radio" name="role" th:field="*{role}"  th:value="EDITOR"/> Editor
+            <INPUT TYPE="radio" name="role" th:field="*{role}"  th:value="VIEWER" checked/> Viewer
+        </fieldset>
+
+        <a class="btn btn-success" th:href="@{/Admin/Users}">Cancel Adding</a>
+        <input  class="btn btn-success" name="add" type="submit" />
+
+
+    </form>
+
+
+
+</div>
+
+<div th:replace="includes.html :: footer"></div>
