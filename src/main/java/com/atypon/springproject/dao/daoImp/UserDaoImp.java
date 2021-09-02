@@ -17,8 +17,8 @@ public class UserDaoImp implements UserDao {
 
 
 
-    private static final String DBPATH = "./src/main/resources/users.txt";
-    private static final String TEMPPATH = "./src/main/resources/userstemp.txt";
+    private static final String DBPATH = "src/main/resources/users.txt";
+    private static final String TEMPPATH = "src/main/resources/userstemp.txt";
     private final Logger logger = Logger.getLogger("UserDao");
 
     File file = new File(DBPATH);

@@ -12,10 +12,9 @@ import java.util.logging.Logger;
 
 public class BooksDaoImp<K,V> implements BooksDao<K,V> {
 
-    private static final String DBPATH = "./src/main/resources/bookDetails.csv";
+    private static final String DBPATH = "src/main/resources/bookDetails.csv";
 
-
-    private static final String TEMPPATH = "./src/main/resources/temp.txt";
+    private static final String TEMPPATH = "src/main/resources/temp.txt";
 
     private final Logger logger = Logger.getLogger("DataBase Log");
 

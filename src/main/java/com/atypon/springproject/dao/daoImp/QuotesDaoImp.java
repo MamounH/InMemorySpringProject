@@ -11,9 +11,9 @@ import java.util.logging.Logger;
 
 public class QuotesDaoImp <K,V> implements QuotesDao<K,V> {
 
-    private static final String QUOTES = "./src/main/resources/quotes.csv";
+    private static final String QUOTES = "src/main/resources/quotes.csv";
 
-    private static final String TEMPPATH = "./src/main/resources/temp2.txt";
+    private static final String TEMPPATH = "src/main/resources/temp2.txt";
 
     private final Logger logger = Logger.getLogger("Quotes Log");
 
