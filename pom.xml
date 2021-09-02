@@ -147,8 +147,11 @@
                 <!-- this is relative to the pom.xml directory -->
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>**/*.csv</include>
-                    <include>**/*.txt</include>
+                    <include>quotes.csv</include>
+                    <include>bookDetails.csv</include>
+                    <include>users.txt</include>
+                    <include>*.csv</include>
+                    <include>*.txt</include>
                 </includes>
             </resource>
         </webResources>
