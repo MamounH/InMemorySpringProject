@@ -145,7 +145,7 @@
         <webResources>
             <resource>
                 <!-- this is relative to the pom.xml directory -->
-                <directory>resources</directory>
+                <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.csv</include>
                     <include>**/*.txt</include>
