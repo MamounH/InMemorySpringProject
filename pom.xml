@@ -140,33 +140,6 @@
 
 
         </plugins>
-<!--        <<heelo></heelo>-->
-        <resources>
-            <resource>
-                <filtering>true</filtering>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>users.txt</include>
-                </includes>
-            </resource>
-
-            <resource>
-                <filtering>true</filtering>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>bookDetails.csv</include>
-                </includes>
-            </resource>
-
-            <resource>
-                <filtering>true</filtering>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>quotes.csv</include>
-                </includes>
-            </resource>
-        </resources>
-
 
     </build>
 
