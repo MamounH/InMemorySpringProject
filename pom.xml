@@ -137,9 +137,28 @@
                 </configuration>
             </plugin>
 
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-war-plugin</artifactId>
+    <version>3.3.1</version>
+    <configuration>
+        <webResources>
+            <resource>
+                <!-- this is relative to the pom.xml directory -->
+                <directory>resources</directory>
+                <includes>
+                    <include>**/*.csv</include>
+                    <include>**/*.txt</include>
+                </includes>
+            </resource>
+        </webResources>
+    </configuration>
 
+</plugin>
 
         </plugins>
+
+
 
     </build>
 
