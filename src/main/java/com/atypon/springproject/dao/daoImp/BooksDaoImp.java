@@ -1,6 +1,6 @@
 package com.atypon.springproject.dao.daoImp;
 
-import com.atypon.springproject.dao.BooksDao;
+import com.atypon.springproject.dao.LibraryDao;
 import com.atypon.springproject.entity.Book;
 
 import java.io.*;
@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class BooksDaoImp<K,V> implements BooksDao<K,V> {
+public class BooksDaoImp<K,V> implements LibraryDao<K,V> {
 
     private static final String DBPATH = "src/main/resources/bookDetails.csv";
 
@@ -37,6 +37,11 @@ public class BooksDaoImp<K,V> implements BooksDao<K,V> {
         return (TreeMap<K, V>) map;
     }
 
+    @Override
+    public boolean RecordsAreDeleted(K key) {
+        return false;
+    }
+
 
     @Override
     public boolean recordIsAdded(V value) {
@@ -51,7 +56,6 @@ public class BooksDaoImp<K,V> implements BooksDao<K,V> {
             }
         }
     }
-
 
     @Override
     public boolean recordIsDeleted(K key)  {
@@ -69,7 +73,6 @@ public class BooksDaoImp<K,V> implements BooksDao<K,V> {
         return handleTempFile(file, newFile);
         }
     }
-
 
     @Override
     public boolean recordIsUpdated(V value, K key)  {

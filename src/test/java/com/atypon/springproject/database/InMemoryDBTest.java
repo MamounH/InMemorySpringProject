@@ -1,5 +1,8 @@
 package com.atypon.springproject.database;
 
+import com.atypon.springproject.dao.LibraryDao;
+import com.atypon.springproject.dao.daoImp.BooksDaoImp;
+import com.atypon.springproject.dao.daoImp.QuotesDaoImp;
 import com.atypon.springproject.entity.Book;
 import com.atypon.springproject.entity.Quote;
 import org.junit.Before;
@@ -11,17 +14,20 @@ import static org.junit.Assert.*;
 
 public class InMemoryDBTest {
 
-    BooksTable<Integer, Book> booksTable;
-    QuotesTable<Integer, Quote> quotesTable;
+    LibraryDao<Integer,Book> bookLibraryDao = new BooksDaoImp<>();
+    LibraryDao<Integer,Quote> QuoteLibraryDao = new QuotesDaoImp<>();
+
+    Table<Integer,Book> booksTable;
+    Table<Integer, Quote> quotesTable;
+
     InMemoryDB inMemoryDB;
 
     @Before
     public void setUp(){
-        booksTable = BooksTable.getInstance();
-        quotesTable = QuotesTable.getInstance();
-        inMemoryDB=new InMemoryDB();
+        booksTable = new Table<>(bookLibraryDao);
+        quotesTable = new Table<>(QuoteLibraryDao);
+        inMemoryDB = InMemoryDB.getInstance();
     }
-
     @Test
     public void getAllBooksTest() {
         assertEquals(booksTable.getDBSize(),inMemoryDB.getAllBooks().size());

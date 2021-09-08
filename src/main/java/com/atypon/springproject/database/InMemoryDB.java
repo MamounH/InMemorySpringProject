@@ -1,38 +1,53 @@
 package com.atypon.springproject.database;
 
+import com.atypon.springproject.dao.LibraryDao;
+import com.atypon.springproject.dao.daoImp.BooksDaoImp;
+import com.atypon.springproject.dao.daoImp.QuotesDaoImp;
 import com.atypon.springproject.entity.Book;
 import com.atypon.springproject.entity.Quote;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 import java.util.TreeMap;
 
 @Repository
+@Scope("singleton")
 public class InMemoryDB {
 
-    private BooksTable<Integer , Book> booksTable;
-    private QuotesTable<Integer , Quote> quotesTable;
+    LibraryDao<Integer,Book> bookLibraryDao = new BooksDaoImp<>();
+    LibraryDao<Integer,Quote> quoteLibraryDao = new QuotesDaoImp<>();
 
-    public InMemoryDB(){
-        booksTable= BooksTable.getInstance();
-        quotesTable=QuotesTable.getInstance();
+    private final Table<Integer,Book> booksTable = new Table<>(bookLibraryDao);
+    private final Table<Integer,Quote> quotesTable = new Table<>(quoteLibraryDao);
+
+    private final IDGenerator idGenerator = new IDGenerator(booksTable.getAll().lastEntry().getKey(),
+            quotesTable.getAll().lastEntry().getKey());
+
+    private static InMemoryDB instance;
+
+    public static synchronized InMemoryDB getInstance(){
+        if (instance == null) {
+            instance = new InMemoryDB();
+        }
+
+        return instance;
     }
 
-
-    public TreeMap getAllBooks(){
+    public TreeMap<Integer,Book> getAllBooks(){
         return booksTable.getAll();
     }
 
-    public TreeMap getAllQuotes(){
+    public TreeMap<Integer,Quote> getAllQuotes(){
         assignBookNames();
         return quotesTable.getAll();
-
     }
 
     private void assignBookNames() {
         Set<Integer> keys = quotesTable.getAll().keySet();
         for(Integer k:keys) {
-            quotesTable.getAll().get(k).setBookName(booksTable.get(quotesTable.get(k).getBookId()).getName());
+            String bookName= booksTable.get(quotesTable.get(k).getBookId()).getName();
+            quotesTable.getAll().get(k).setBookName(bookName);
         }
     }
 
@@ -44,7 +59,7 @@ public class InMemoryDB {
         return quotesTable.get(key);
     }
 
-    public TreeMap getBookQuotes(int id) {
+    public TreeMap<Integer,Quote> getBookQuotes(int id) {
 
         TreeMap<Integer,Quote> quotes = new TreeMap<>();
 
@@ -62,16 +77,15 @@ public class InMemoryDB {
 
     public boolean bookIsAdded(Book book){
 
-            int id = booksTable.get(booksTable.getAll().lastEntry().getKey()).getID() + 1;
-            book.setID(id);
-            booksTable.add(book,book.getID());
+        book.setID(idGenerator.getNewBookId());
+        booksTable.add(book,book.getID());
         return booksTable.recordExists(book.getID());
     }
 
     public boolean quoteIsAdded(Quote quote){
 
-            quote.setId(quotesTable.get((Integer) getAllQuotes().lastEntry().getKey()).getId() + 1);
-            quotesTable.add(quote,quote.getId());
+        quote.setId(idGenerator.getNewQuoteId());
+        quotesTable.add(quote,quote.getId());
         return quotesTable.recordExists(quote.getId());
     }
 
@@ -90,7 +104,7 @@ public class InMemoryDB {
 
     public void removeBook(int key) {
         booksTable.remove(key);
-        if (quotesTable.bookQuotesAreRemoved(key)){
+        if (quoteLibraryDao.RecordsAreDeleted(key)){
                 quotesTable.getAll().entrySet().removeIf(entry -> entry.getValue().getBookId() == key);
         }
     }

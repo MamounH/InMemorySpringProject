@@ -14,7 +14,6 @@ import java.util.Objects;
 @Setter
 public class Book implements Serializable {
 
-
     private int ID;
 
     @NotEmpty(message = "* Please provide book name")

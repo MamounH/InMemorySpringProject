@@ -1,3 +1,4 @@
-Mamoun,AbuKoush,mamoun@atypon.com,$2a$10$6zzbsdR6j0J1.Hzbj17RH.r.ugnsNDZrUoulC7AJPfg1cXIPHe1Py,EDITOR
-Admin,Admin,admin@atypon.com,$2a$10$2ow9RKpB8yK2cHEmMMopfuja9WZMD8ToGoBuc16QkzQiyH4PlzBve,ADMIN
-Ahmad,Ahmad,ahmad@atypon.com,$2a$10$Q6DVWNePn/P8DmZAD.FmvOWRo0S0MiOPNbWSJHt5qNgN9/oLruT6W,VIEWER
+Mamoun,AbuKoush,mamoun@atypon.com,$e0801$Mvf8pKrrw5+rb35Q59fP+qXhDctFFus3cOEV9ONcAFYO/8Z6bPrGl8VAZ/2chxTHjnqkWKKXTHZuVB9HDidOug==$r1WZZcEfYTUivlv6dEedgmUQvH8kgLxA9TO7AIaMTD0=,EDITOR
+Admin,Admin,admin@atypon.com,$e0801$vQ9TF1ZpsUDJQ56Db3Nzn5yALDgKvrxu+QXPSIcHY8sBX/OxOMh50fHT74f+n13icaOcc1EXAUBjTeEBieOX0w==$i57V5VWSL0fM0AMFLlMwZfjpdKzMXQoFwj2qwyPfBP4=,ADMIN
+Ahmad,Ahmad,ahmad@atypon.com,$e0801$fn8MAfjXGlI8hvrrhoOQ7F7g6hxqTBq9q31uSt2utWZGi2TBSKSq4Xa7o76nJeqaAIQUyDMKEXBik/IoCx5gTw==$2OYM8d/h9TviTiFSn/VST4PeOxivPWnsrdpF8TZT6+Y=,VIEWER
+Ahmad,Ali,daniel@atypon.com,$e0801$agDbJYBpNNL8aLnERrb3l07iQy6Mk4PMp/X1uoTYkfZbQJ2kEGZtRPAceoiu+/SS1kv6U99Zt66XmsjFehSgNQ==$N0zmW2tC6+XKf8oAuEQKMB5RVmz7K4FzrzkTu2+daxA=,EDITOR

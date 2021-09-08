@@ -3,7 +3,7 @@ package com.atypon.springproject.database;
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-abstract class Transactions<V>{
+public class AccessSynch<V>{
 
 
 
@@ -91,13 +91,13 @@ abstract class Transactions<V>{
      * @throws InterruptedException if thread is interrupted  ours
      */
     public void acquireReadLock(final V object) throws InterruptedException {
-        ReentrantReadWriteLock lock = null;
-        synchronized (this.lock) {
-            lock = getLock(object);
+        ReentrantReadWriteLock readLock;
+        synchronized (lock) {
+            readLock = getLock(object);
             incrementThreadCount(object);
         }
         // do this outside synchronized for concurrency
-        lock.readLock().lockInterruptibly();
+        readLock.readLock().lockInterruptibly();
     }
 
     /**

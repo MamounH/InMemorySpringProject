@@ -7,7 +7,6 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 
 @Repository
@@ -47,7 +46,7 @@ public class UserAccountConfig {
     @NotNull
     private String updateUser(User user, String email) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepo.updateUser(user,email);
+        userRepo.update(user,email);
         return "redirect:/Admin/Users";
     }
 

@@ -29,7 +29,6 @@ public class AdminController {
         return"/Admin/Users";
     }
 
-
     @GetMapping(value = "AddUser")
     protected String showAddUserForm(ModelMap modelMap)  {
         modelMap.addAttribute("user", User.builder().build());
@@ -50,7 +49,7 @@ public class AdminController {
 
     @GetMapping(value = "UpdateUser")
     protected String showUpdateUserForm(@RequestParam String email, ModelMap modelMap) {
-        modelMap.addAttribute("user",usersDao.getUser(email));
+        modelMap.addAttribute("user",usersDao.get(email));
         return "/Admin/UpdateUser";
 
     }
@@ -69,7 +68,7 @@ public class AdminController {
 
     private boolean isValidEmail(User user,String oldEmail, BindingResult result){
         if (usersDao.userExists(user.getEmail())) {
-            if(!usersDao.getUser(oldEmail).getEmail().equalsIgnoreCase(user.getEmail())) {
+            if(!usersDao.get(oldEmail).getEmail().equalsIgnoreCase(user.getEmail())) {
                 result.rejectValue("email", "error.user", "An account already exists for this email.");
                 return false;
             }
@@ -80,7 +79,7 @@ public class AdminController {
 
     @GetMapping(value = "DeleteUser")
     protected String deleteUser(@RequestParam String email) {
-        usersDao.deleteUser(email);
+        usersDao.remove(email);
         return "redirect:/Admin/Users";
     }
 }

@@ -1,6 +1,6 @@
 package com.atypon.springproject.dao.daoImp;
 
-import com.atypon.springproject.dao.QuotesDao;
+import com.atypon.springproject.dao.LibraryDao;
 import com.atypon.springproject.entity.Quote;
 
 import java.io.*;
@@ -9,7 +9,7 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class QuotesDaoImp <K,V> implements QuotesDao<K,V> {
+public class QuotesDaoImp <K,V> implements LibraryDao<K,V> {
 
     private static final String QUOTES = "src/main/resources/quotes.csv";
 
@@ -20,8 +20,6 @@ public class QuotesDaoImp <K,V> implements QuotesDao<K,V> {
     File file = new File(QUOTES);
 
     File newFile = new File(TEMPPATH);
-
-
 
 
     @Override

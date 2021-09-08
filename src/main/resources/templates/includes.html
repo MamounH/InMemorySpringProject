@@ -28,10 +28,9 @@
 
 </div>
 
-<div th:fragment="AdminNavBar">
+<div sec:authorize="hasRole('ROLE_ADMIN')" th:fragment="AdminNavBar">
 
-
-    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+    <nav  class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
         <div class="logo">
             <img src="https://raw.githubusercontent.com/MamounH/Logo/main/220px-Atypon.png" class="img img-responsive center-block"/>
         </div>
@@ -72,7 +71,7 @@
 
 </div>
 
-<div th:fragment="ViewerNavBar">
+<div sec:authorize="hasRole('ROLE_VIEWER')"  th:fragment="ViewerNavBar">
 
     <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
         <div class="logo">
@@ -126,8 +125,8 @@
 </div>
 
 
-<div th:fragment="EditorNavBar">
-    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+<div sec:authorize="hasRole('ROLE_EDITOR')" th:fragment="EditorNavBar">
+    <nav  class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
         <div class="logo">
             <img src="https://raw.githubusercontent.com/MamounH/Logo/main/220px-Atypon.png" class="img img-responsive center-block"/>
         </div>

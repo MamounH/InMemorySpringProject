@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -30,12 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login.html").permitAll()
                 .antMatchers("/error.html").authenticated()
-                .antMatchers("/Admin/**").permitAll()
-                .antMatchers("/Editor/**").permitAll()
-                .antMatchers("/Viewer/**").permitAll()
-//                .antMatchers("/Admin/**").hasRole("ADMIN")
-//                .antMatchers("/Editor/**").hasRole("EDITOR")
-//                .antMatchers("/Viewer/**").hasRole("VIEWER")
+                .antMatchers("/Admin/**").hasRole("ADMIN")
+                .antMatchers("/Editor/**").hasRole("EDITOR")
+                .antMatchers("/Viewer/**").hasRole("VIEWER")
                 .and()
                 .formLogin()
                 .loginPage("/login").usernameParameter("email")
@@ -59,14 +57,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         DaoAuthenticationProvider daoAuthenticationProvider= new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         daoAuthenticationProvider.setUserDetailsService(this.userServiceImpl);
-
         return daoAuthenticationProvider;
+
     }
-
-
 
     @Bean
     PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
+        return new SCryptPasswordEncoder();
     }
+
+
 }

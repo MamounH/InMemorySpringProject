@@ -25,10 +25,23 @@ public class UserDaoImp implements UserDao {
     File newFile = new File(TEMPPATH);
 
 
+    @Override
+    public List<User> getAll(){
 
+        List<User> users = new ArrayList<>();
+
+        try (FileReader fileReader = new FileReader(DBPATH);
+             BufferedReader bufferedReader= new BufferedReader(fileReader)) {
+            loadUsers(users, bufferedReader);
+        } catch (Exception e) {
+            logError(e);
+        }
+        return users;
+
+    }
 
     @Override
-    public User getUser(String username){
+    public User get(String username){
         try(Scanner scanner =new Scanner(new File(DBPATH)) ){
             return retrieveUserFromDB(username, scanner);
         } catch (Exception e) {
@@ -38,19 +51,48 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public List<User> getAll(){
+    public void update(User user, String email){
 
-        List<User> users = new ArrayList<>();
-
-        try (FileReader fileReader = new FileReader(DBPATH);
-             BufferedReader bufferedReader= new BufferedReader(fileReader)) {
-             loadUsers(users, bufferedReader);
+        try(FileReader fileReader =new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            FileWriter fileWriter = new FileWriter(newFile)) {
+            updateExistingRecord(user,email, bufferedReader, fileWriter);
         } catch (Exception e) {
             logError(e);
         }
-        return users;
 
+        handleTempFile();
     }
+
+    @Override
+    public void remove(String username) {
+        try (FileReader fileReader = new FileReader(file);
+             BufferedReader bufferedReader =new BufferedReader(fileReader);
+             FileWriter fileWriter=new FileWriter(newFile) ){
+
+            deleteUserFromDB(username, bufferedReader, fileWriter);
+        } catch (Exception e) {
+            logError(e);
+        }
+        handleTempFile();
+    }
+
+    @Override
+    public boolean userExists(String username){
+        boolean isFound = false;
+        try (Scanner scanner =new Scanner(new FileReader(DBPATH)) ){
+            while(scanner.hasNextLine() && !isFound) {
+                isFound = scanner.nextLine().contains(username);
+            }
+        }
+        catch(IOException e) {
+            logError(e);
+        }
+
+        return isFound;
+    }
+
+
 
     private void loadUsers(List<User> users, BufferedReader bufferedReader) throws IOException {
 
@@ -62,20 +104,6 @@ public class UserDaoImp implements UserDao {
                     .role(data[4]).build();
             users.add(user);
         }
-    }
-
-    @Override
-    public void updateUser(User user, String email){
-
-        try(FileReader fileReader =new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            FileWriter fileWriter = new FileWriter(newFile)) {
-            updateExistingRecord(user,email, bufferedReader, fileWriter);
-        } catch (Exception e) {
-            logError(e);
-        }
-
-        handleTempFile();
     }
 
 
@@ -97,7 +125,6 @@ public class UserDaoImp implements UserDao {
         saveUser(user);
     }
 
-
     private void saveUser(User user) {
 
         try (FileWriter fileWriter = new FileWriter(DBPATH, true)){
@@ -106,35 +133,6 @@ public class UserDaoImp implements UserDao {
             logError(e);
         }
     }
-
-    @Override
-    public void deleteUser(String username) {
-        try (FileReader fileReader = new FileReader(file);
-             BufferedReader bufferedReader =new BufferedReader(fileReader);
-             FileWriter fileWriter=new FileWriter(newFile) ){
-
-            deleteUserFromDB(username, bufferedReader, fileWriter);
-        } catch (Exception e) {
-            logError(e);
-        }
-        handleTempFile();
-    }
-
-
-    @Override
-    public boolean userExists(String username){
-        boolean isFound = false;
-        try (Scanner scanner =new Scanner(new FileReader(DBPATH)) ){
-            while(scanner.hasNextLine() && !isFound) {
-                isFound = scanner.nextLine().contains(username);
-            }
-        }
-        catch(IOException e) {
-            logError(e);
-        }
-
-        return isFound;
-}
 
 
     private User retrieveUserFromDB(String username, Scanner scanner) {
@@ -171,7 +169,6 @@ public class UserDaoImp implements UserDao {
         }
         fileWriter.flush();
     }
-
 
     private void addUserToDb(User user, FileWriter fileWriter) throws IOException {
         fileWriter.write(user.toString());

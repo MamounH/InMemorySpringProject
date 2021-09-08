@@ -22,10 +22,9 @@ public class LoginServlet {
 
     @GetMapping({"", "/"})
     public String doGet() {
+
         Authentication authentication = authFacade.getAuthentication();
-
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-
         if (!authentication.isAuthenticated() || roles.contains("ROLE_ANONYMOUS")) {
             return "login";
         }

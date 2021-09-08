@@ -119,6 +119,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.64</version>
+        </dependency>
 
     </dependencies>
 
@@ -136,29 +141,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-war-plugin</artifactId>
-    <version>3.3.1</version>
-    <configuration>
-        <webResources>
-            <resource>
-                <!-- this is relative to the pom.xml directory -->
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>quotes.csv</include>
-                    <include>bookDetails.csv</include>
-                    <include>users.txt</include>
-                    <include>*.csv</include>
-                    <include>*.txt</include>
-                </includes>
-            </resource>
-        </webResources>
-    </configuration>
-
-</plugin>
-
+            
         </plugins>
 
 

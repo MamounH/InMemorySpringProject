@@ -12,6 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @Getter @Setter
 public class User {
 
+
     @NotEmpty(message = "* Please provide user Email")
     @Email(message = "* Please provide a valid Email")
     String email;
@@ -26,6 +27,7 @@ public class User {
     @NotEmpty(message = "* Please provide user password")
     String password;
 
+    @NotEmpty(message = "* user cannot be created without an assigned role")
     String role;
 
     @Override
