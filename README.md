@@ -189,7 +189,7 @@ These websites have nothing to do with the technical detailes of the project but
 
 
 
-For more screen shots please click [here!](/Screenshots/)
+For more screenshots please click [here!](/Screenshots/)
 
 
 
