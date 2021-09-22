@@ -61,7 +61,7 @@ other tiers. The security will be maximised because the presentation tier and da
 tier cannot communicate directly because the application tier is working as a
 firewall preventing incorrect or malicious data to be inserted to the database. 
 
-## Concurrent Access to database records
+## Concurrent Access to Database Records
 
 The sole purpose of this project is to build every thing from scratch that’s
 why I avoided using ConcurrentHashMap in the first version and in this
@@ -91,7 +91,11 @@ system I used JUnit testing framework and manual testing.
 
 ## AWS 
 
-Amazon Web Services were used in the project, as several instances were created for Jenkins Server and Web Servers for both versions of the project.
+When a build is ready to be deployed, Jenkins server will deploy it to AWS, I used
+here two EC2 instances one for Traditional Web application using Servlets/Jsp and
+the other is for the spring version of the project. Since we already know that the
+tests were built successfully, we do not have to worry a lot if the production release
+will be facing some issues. 
 
 ![](Screenshots/AWS.PNG)
 
