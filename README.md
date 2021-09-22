@@ -8,7 +8,7 @@ were applied. Also to view the full detailed project report please click [here](
 
 ## Overview
 
-The system has 3 levels of users: Students, Instructors, Admins. 
+The system has 3 levels of users: Admins, Editors, Viewers. 
 
 ![](Screenshots/ContextDiagram.png)
 
