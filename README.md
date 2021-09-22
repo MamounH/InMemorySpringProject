@@ -1,5 +1,5 @@
 # Atypon Java and DevOps Training  
-Atypon Final Project Using Spring, Spring Security, Thymeleaf with Spring extras security extension. The same project was implementd first using traditional MVC Servlets/ JSPs click [here](https://github.com/MamounH/InMemoryServletWebProject) to view it.
+Atypon Final Project (InMemory Database) Using Spring, Spring Security, Thymeleaf with Spring extras security extension. The same project was implementd first using traditional MVC Servlets/ JSPs click [here](https://github.com/MamounH/InMemoryServletWebProject) to view it.
 
 To make the Web application Maintainable, Extendable and Scalable, SOLID principles, Design Patterns, ACID Criteria, Clean Code principles and Effective Java items
 were applied. Also to view the full detailed project report please click [here](https://github.com/MamounH/InMemorySpringProject/blob/master/ProjectReport/ProjectReport.pdf)!
